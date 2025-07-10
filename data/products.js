@@ -656,5 +656,41 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "custom_id_1",
+    image: "images/products/flutes.jpg",
+    name: "Flute",
+    rating: {
+      stars: 1.5,
+      count: 3
+    },
+    priceCents: 2300,
+    keywords: [
+    ]
+  },
+  {
+    id: "custom_id_2",
+    image: "images/products/rubikscube.webp",
+    name: "Rubiks Cube",
+    rating: {
+      stars: 3,
+      count: 31
+    },
+    priceCents: 2500,
+    keywords: [
+    ]
+  },
+  {
+    id: "custom_id_3",
+    image: "images/products/gogeta.webp",
+    name: "Gogeta Action Figure",
+    rating: {
+      stars: 2,
+      count: 31570
+    },
+    priceCents: 1500,
+    keywords: [
+    ]
   }
 ];
