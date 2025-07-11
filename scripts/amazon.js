@@ -41,7 +41,7 @@ products.forEach((product, index)=>{
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
+          <div class="added-to-cart js-added-to-cart-${product.id}">
             <img src="images/icons/checkmark.png">
             Added
           </div>
@@ -81,13 +81,18 @@ document.querySelectorAll('.js-add-to-cart')
 
         let cartQuantity=0;
 
+        // TODO working on the added to cart toast.
         cart.forEach((items)=>{
           cartQuantity += items.quantity
         })
-
         document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
 
-        console.log(cart)
+
+        // for added toste.
+
+        let addedStyle = document.querySelector(`js-added-to-cart-${productId}`)
+
+         console.log('clicked') /*troubleshooting process*/
         
     })
 })
