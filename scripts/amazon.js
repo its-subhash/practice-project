@@ -1,7 +1,9 @@
-import {cart as dataCart} from '../data/cart.js';
+import {addToCart, updateCartQuantity} from '../data/cart.js';
 import { products as dataProducts } from '../data/products.js';
 
 let productsHTML = "";
+
+//TODO: split product card into it's seperate js file.
 
 dataProducts.forEach((product) => {
   productsHTML += `
@@ -63,35 +65,10 @@ const addCartButton = document.querySelectorAll(".js-add-to-cart");
 addCartButton.forEach((button) => {
   button.addEventListener("click", () => {
     const productId = button.dataset.productId;
-
-    let matchingItem;
-    let quantity = document.querySelector(`.js-product-quantity-${productId}`);
-
-    dataCart.forEach((item) => {
-      if (productId === item.productId) {
-        matchingItem = item;
-      }
-    });
-
-    if (matchingItem) {
-      matchingItem.quantity += Number(quantity.value);
-    } else {
-      dataCart.push({
-        productId: productId,
-        quantity: Number(quantity.value),
-      });
-    }
-
-    let cartQuantity = 0;
-
-    dataCart.forEach((items) => {
-      cartQuantity += items.quantity;
-    });
-    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+    addToCart(productId)
+    updateCartQuantity()
   });
-});
 
-addCartButton.forEach((button) => {
   let intervalId;
   button.addEventListener("click", () => {
     const productId = button.dataset.productId;
@@ -104,3 +81,4 @@ addCartButton.forEach((button) => {
     }, 2000);
   });
 });
+
