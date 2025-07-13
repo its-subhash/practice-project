@@ -1,6 +1,9 @@
+import {cart as dataCart} from '../data/cart.js';
+import { products as dataProducts } from '../data/products.js';
+
 let productsHTML = "";
 
-products.forEach((product) => {
+dataProducts.forEach((product) => {
   productsHTML += `
             <div class="product-container">
           <div class="product-image-container">
@@ -64,7 +67,7 @@ addCartButton.forEach((button) => {
     let matchingItem;
     let quantity = document.querySelector(`.js-product-quantity-${productId}`);
 
-    cart.forEach((item) => {
+    dataCart.forEach((item) => {
       if (productId === item.productId) {
         matchingItem = item;
       }
@@ -73,7 +76,7 @@ addCartButton.forEach((button) => {
     if (matchingItem) {
       matchingItem.quantity += Number(quantity.value);
     } else {
-      cart.push({
+      dataCart.push({
         productId: productId,
         quantity: Number(quantity.value),
       });
@@ -81,7 +84,7 @@ addCartButton.forEach((button) => {
 
     let cartQuantity = 0;
 
-    cart.forEach((items) => {
+    dataCart.forEach((items) => {
       cartQuantity += items.quantity;
     });
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
