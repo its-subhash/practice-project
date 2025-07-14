@@ -1,5 +1,5 @@
-import {addToCart, updateCartQuantity} from '../data/cart.js';
-import { products as dataProducts } from '../data/products.js';
+import { addToCart, updateCartQuantity } from "../data/cart.js";
+import { products as dataProducts } from "../data/products.js";
 
 let productsHTML = "";
 
@@ -63,15 +63,15 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 const addCartButton = document.querySelectorAll(".js-add-to-cart");
 
 addCartButton.forEach((button) => {
-  button.addEventListener("click", () => {
-    const productId = button.dataset.productId;
-    addToCart(productId)
-    updateCartQuantity()
-  });
-
   let intervalId;
   button.addEventListener("click", () => {
     const productId = button.dataset.productId;
+    addToCart(productId);
+    updateCartQuantity();
+
+
+    // For adding added toast
+
     document.querySelector(`.js-added-to-cart-${productId}`).style.opacity = 1;
     clearInterval(intervalId);
     intervalId = setInterval(() => {
@@ -81,4 +81,3 @@ addCartButton.forEach((button) => {
     }, 2000);
   });
 });
-
